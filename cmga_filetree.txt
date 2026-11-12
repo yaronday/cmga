@@ -1,5 +1,4 @@
 cmga/
-├── .dist/
 ├── .vscode/
 │ ├── c_cpp_properties.json
 │ ├── launch.json
@@ -11,6 +10,7 @@ cmga/
 │ │   ├── logger.hpp
 │ │   ├── timer.hpp
 │ │   └── x11colors_validator.hpp
+│ ├── src/
 │ └── CMakeLists.txt
 ├── data/
 │ ├── default_matrices/
@@ -21,14 +21,8 @@ cmga/
 │ │ └── mat_10_10_1_3_L.txt
 │ └── multicolor/
 │   ├── mat_3_3_1_3.txt
-│   ├── mat_3_3_1_3_out_max4_c1_UF_tree.dot
-│   ├── mat_3_3_1_3_out_max4_c1_UF_tree.svg
 │   ├── mat_5_5_1_4.txt
-│   ├── mat_5_5_1_4_out_max4_c2_UF_tree.dot
-│   ├── mat_5_5_1_4_out_max4_c2_UF_tree.svg
-│   ├── mat_10_10_1_3.txt
-│   ├── mat_10_10_1_3_out_max27_c2_UF_tree.dot
-│   └── mat_10_10_1_3_out_max27_c2_UF_tree.svg
+│   └── mat_10_10_1_3.txt
 ├── examples/
 │ └── eq_size/
 │   ├── mat_5_5_1_4.txt
@@ -77,7 +71,7 @@ cmga/
 ├── .gitignore
 ├── CMakeLists.txt
 ├── CMakePresets.json
+├── cmga_filetree.txt
 ├── ftd_cfg.json
 ├── LICENSE
-├── cmga_filetree.txt
 └── README.md
