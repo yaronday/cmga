@@ -37,7 +37,7 @@ and required only for UF visualization.
 ## Usage
 
 Run `cmga -h` for the complete CLI help. By default, CMGA processes matrix
-files in `data/multicolor` and runs both algorithms.
+files in `data/multicolor` and runs UF algorithm.
 
 ```bash
 # Analyze matrices in a directory
@@ -100,7 +100,7 @@ cmga filegen --sq --minr 100 --maxr 500 --r_inc 100 --ovr
 | `--minc`, `--maxc`, `--c_inc` | Column range and increment.                                         |
 | `--minv`, `--maxv`            | Minimum and maximum cell values; minimum must be less than maximum. |
 | `--csv`                       | Write CSV files instead of space-separated text files.              |
-| `--confirm`                   | Skip the interactive save confirmation.                             |
+| `--confirm`                   | Skip the interactive save confirmation. Use with caution.           |
 | `--ovr`                       | Allow overwriting existing files.                                   |
 
 See [cmga_filetree.txt](cmga_filetree.txt) for the repository layout.
