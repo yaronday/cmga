@@ -1,5 +1,4 @@
 #include "main.hpp"
-#include "common/timer.hpp"
 
 int main(int argc, char *argv[]) {
   bool paint = false;
