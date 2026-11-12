@@ -1,5 +1,5 @@
 {
-  "ignore_dirs": [".git", "cmga_vs", "build", "static_binaries", ".venv"],
+  "ignore_dirs": [".git", "cmga_vs", "build", "static_binaries", ".venv", ".cache"],
   "ignore_files": [".DS_Store"],
   "printout": true
 }
