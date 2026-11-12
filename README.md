@@ -77,7 +77,7 @@ color codes. UF visualizes those regions with distinct node colors:
 Without `--paint` or `--no_color`, results are written under the root directory.
 The main operation overwrites existing output files.
 
-## Array2D file generator
+## Matrix file generator
 
 Generate random matrix files with `filegen`. Defaults are 10–20 rows and
 columns in increments of 10, with values from 1 to 3. Dimensions can be at most
