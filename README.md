@@ -1,6 +1,6 @@
 # Color Matrix Genalyzer (CMGA)
 
-CMGA is a C++20 command-line tool that finds the largest same-value connected
+CMGA is a C++20 CLI tool that finds the max connected
 region in one or more matrices. It supports depth-first search (DFS) and
 Union-Find (UF), uses 8-neighbor connectivity, and can paint results, crop
 regions, or visualize the UF structure. UF preserves every region tied for
@@ -36,7 +36,7 @@ and required only for UF visualization.
 
 ## Usage
 
-Run `cmga --help` for the complete CLI help. By default, CMGA processes matrix
+Run `cmga -h` for the complete CLI help. By default, CMGA processes matrix
 files in `data/multicolor` and runs both algorithms.
 
 ```bash
