@@ -1,0 +1,23 @@
+BasedOnStyle: LLVM
+IndentWidth: 2
+BreakBeforeBraces: Attach
+PointerAlignment: Right
+ColumnLimit: 100
+# AccessModifierOffset: -2
+
+SortIncludes: true
+IncludeCategories:
+  # 1. Main associated header
+  # 2. C++ Standard Library headers
+  - Regex: "^<c[a-z]+>|^<[a-z]+>$"
+    Priority: 2
+    SortPriority: 0
+  # 3. Third-party library headers
+  - Regex: "^<.*>"
+    Priority: 3
+    SortPriority: 0
+  # 4. Project-local headers
+  - Regex: ".*"
+    Priority: 4
+    SortPriority: 0
+IncludeIsMainRegex: "(_test)?$"

@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug CMGA",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/cmga",
+            "cwd": "${workspaceFolder}",
+            "args": ["--vis", "--conn_color", "blueviolet"],
+            "preLaunchTask": "Compile Debug"
+        },
+        {
+            "name": "Release CMGA",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Release/cmga",
+            "cwd": "${workspaceFolder}",
+            "args": ["--vis", "--conn_color", "blueviolet", "--crop", "--paint"],
+            "preLaunchTask": "Compile Release"
+        },
+        {
+            "name": "RelWithDebInfo CMGA",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/RelWithDebInfo/cmga",
+            "cwd": "${workspaceFolder}",
+            "args": ["--vis", "--conn_color", "blueviolet"],
+            "preLaunchTask": "Compile RelWithDebInfo"
+        },
+        {
+            "name": "MinSizeRel CMGA",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/MinSizeRel/cmga",
+            "cwd": "${workspaceFolder}",
+            "args": ["--vis", "--conn_color", "blueviolet"],
+            "preLaunchTask": "Compile MinSizeRel"
+        }
+    ]
+}

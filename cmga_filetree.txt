@@ -1,0 +1,83 @@
+cmga/
+├── .dist/
+├── .vscode/
+│ ├── c_cpp_properties.json
+│ ├── launch.json
+│ └── tasks.json
+├── common/
+│ ├── include/
+│ │ └── common/
+│ │   ├── array2d.hpp
+│ │   ├── logger.hpp
+│ │   ├── timer.hpp
+│ │   └── x11colors_validator.hpp
+│ └── CMakeLists.txt
+├── data/
+│ ├── default_matrices/
+│ │ ├── mat_10_10_1_3_E.txt
+│ │ ├── mat_10_10_1_3_F.txt
+│ │ ├── mat_10_10_1_3_I.txt
+│ │ ├── mat_10_10_1_3_K.txt
+│ │ └── mat_10_10_1_3_L.txt
+│ └── multicolor/
+│   ├── mat_3_3_1_3.txt
+│   ├── mat_3_3_1_3_out_max4_c1_UF_tree.dot
+│   ├── mat_3_3_1_3_out_max4_c1_UF_tree.svg
+│   ├── mat_5_5_1_4.txt
+│   ├── mat_5_5_1_4_out_max4_c2_UF_tree.dot
+│   ├── mat_5_5_1_4_out_max4_c2_UF_tree.svg
+│   ├── mat_10_10_1_3.txt
+│   ├── mat_10_10_1_3_out_max27_c2_UF_tree.dot
+│   └── mat_10_10_1_3_out_max27_c2_UF_tree.svg
+├── examples/
+│ └── eq_size/
+│   ├── mat_5_5_1_4.txt
+│   └── mat_5_5_1_4_out_max4_c2_UF_tree.svg
+├── scripts/
+│ ├── build_cmga.sh
+│ ├── clang_format_all.sh
+│ └── clean_outputs.sh
+├── src/
+│ ├── analyzer/
+│ │ ├── color_grid.cpp
+│ │ ├── color_grid.hpp
+│ │ ├── max_color_dfs.cpp
+│ │ ├── max_color_dfs.hpp
+│ │ ├── max_color_uf.cpp
+│ │ ├── max_color_uf.hpp
+│ │ ├── union_find.cpp
+│ │ └── union_find.hpp
+│ ├── assets/
+│ │ ├── cmga.ico
+│ │ └── Resource.rc
+│ ├── cli/
+│ │ ├── cli_consts.hpp
+│ │ ├── cli_utils.cpp
+│ │ └── cli_utils.hpp
+│ ├── io/
+│ │ ├── file_utils.cpp
+│ │ ├── file_utils.hpp
+│ │ ├── matfile_handler.cpp
+│ │ └── matfile_handler.hpp
+│ ├── support/
+│ │ ├── colors.hpp
+│ │ ├── console.cpp
+│ │ ├── console.hpp
+│ │ ├── constants.hpp
+│ │ ├── error_consts.hpp
+│ │ ├── error_handler.cpp
+│ │ ├── error_handler.hpp
+│ │ ├── utils.cpp
+│ │ └── utils.hpp
+│ ├── CMakeLists.txt
+│ ├── main.cpp
+│ └── main.hpp
+├── .clang-format
+├── .gitattributes
+├── .gitignore
+├── CMakeLists.txt
+├── CMakePresets.json
+├── ftd_cfg.json
+├── LICENSE
+├── cmga_filetree.txt
+└── README.md

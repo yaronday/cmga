@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Compile Debug",
+            "windows": {
+                "command": "cmake --preset default; cmake --build --preset Debug"
+            },
+            "osx": {
+                "command": "cmake --preset default && cmake --build --preset Debug"
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Compile Release",
+            "windows": {
+                "command": "cmake --preset default; cmake --build --preset Release"
+            },
+            "osx": {
+                "command": "cmake --preset default && cmake --build --preset Release"
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "Compile RelWithDebInfo",
+            "windows": {
+                "command": "cmake --preset default; cmake --build --preset RelWithDebInfo"
+            },
+            "osx": {
+                "command": "cmake --preset default && cmake --build --preset RelWithDebInfo"
+            },
+            "group": "build",
+            "problemMatcher": []
+        }, 
+        {
+            "type": "shell",
+            "label": "Compile MinSizeRel",
+            "windows": {
+                "command": "cmake --preset default; cmake --build --preset MinSizeRel"
+            },
+            "osx": {
+                "command": "cmake --preset default && cmake --build --preset MinSizeRel"
+            },
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
