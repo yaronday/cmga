@@ -283,7 +283,7 @@ bool MatFileHandler::matLoader(Array2D<uint8_t> &matrix, const std::string &file
         uint8_t value = buffer[idx] - '0';
 
         if (value == 0) {
-          err::handle(ErrCode::INVALID_RANGE, value, "Array2D", MIN_V, MAX_V);
+          err::handle(ErrCode::INVALID_RANGE, value, "Matrix", MIN_V, MAX_V);
           return false;
         }
 

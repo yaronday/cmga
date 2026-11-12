@@ -59,7 +59,7 @@ void mainMenuDisplay() {
   console::formatTxt(std::format("Example: ./cmga_mac {} data/big1 {}\n", P_ROOTDIR, P_FORCE_VIS),
                      LIGHT_GREEN);
 
-  console::formatTxt("Array2D Files Generator:", LIGHT_CYAN);
+  console::formatTxt("Matrix Files Generator:", LIGHT_CYAN);
   std::cout << std::format("Usage: cmga filegen {} {} {} [{} <rootDir>] {}\n"
                            "                    [{} <min_rows>] [{} <max_rows>] [{} "
                            "<row_inc>]\n"

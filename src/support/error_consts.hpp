@@ -9,7 +9,7 @@ enum class ErrCode {
   UNKNOWN_OPTION,
   UNEXPECTED_ARG,
 
-  // Array2D related
+  // Matrix related
   INVALID_MAT,
   ROW_LEN_MISMATCH,
   INV_MAT_RANGE,
@@ -55,12 +55,12 @@ inline constexpr char FILE_ERR[] = "Error opening file";
 inline constexpr char INV_ALGO_ERR[] =
     "Invalid value for --algo option. Must be 'DFS', 'UF', or 'BOTH'";
 
-inline constexpr char MAT_EMPTY_ERR[] = "Array2D is empty";
-inline constexpr char INV_MAT_ERR[] = "Invalid Array2D";
-inline constexpr char MAT_GEN_ERR[] = "Array2D generation failed";
+inline constexpr char MAT_EMPTY_ERR[] = "Matrix is empty";
+inline constexpr char INV_MAT_ERR[] = "Invalid Matrix";
+inline constexpr char MAT_GEN_ERR[] = "Matrix generation failed";
 inline constexpr char NO_MAT_FOUND_ERR[] = "No matrix was found";
 inline constexpr char EMPTYSTR_ERR[] = "Empty string";
-inline constexpr char MAT_IDX_RANGE_ERR[] = "Array2D index out of range";
+inline constexpr char MAT_IDX_RANGE_ERR[] = "Matrix index out of range";
 
 inline constexpr char ROWLEN_ERR[] = "Row length mismatch";
 inline constexpr char MULTIDIG_ERR[] = "Multidigit detected";
@@ -71,7 +71,7 @@ inline constexpr char INV_RANGE_ERR[] = "Invalid range";
 inline constexpr char GRAPHVIZ_NA_ERR[] =
     "The visualizer must have Graphviz installed and configured as system env "
     "variable";
-inline constexpr char GRAPHVIZ_MAT_LIMIT[] = "Visualizer deactivated: Array2D max(m, n) > ";
+inline constexpr char GRAPHVIZ_MAT_LIMIT[] = "Visualizer deactivated: Matrix max(m, n) > ";
 inline constexpr char RENDER_CMD_FAILED[] = "Render command failed - \n";
 inline constexpr char INV_CONN_COLOR_ERR[] = "Invalid connector color";
 

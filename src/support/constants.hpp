@@ -5,7 +5,7 @@ inline constexpr char COPYRIGHT[] = "\nCopyright (C) Yaron Dayan 2026\n";
 inline constexpr char VERSION[] = "v1.0.0";
 inline constexpr char TITLE[] = "Color Matrix Genalyzer (CMGA) ";
 
-// Array2D Stringx
+// Matrix String
 inline constexpr char MATSTR[] =
     R"({{1, 2, 1}, {2, 3, 2}, {1, 2, 1}}, {{1, 2, 1}, {2, 1, 2}, {1, 2, 3}})";
 
@@ -30,7 +30,7 @@ inline constexpr int MAX_V = 3;
 inline constexpr bool SQMAT = false;
 inline constexpr char LOAD_MATRICES[] = "Loading matrix files...\n";
 inline constexpr char LOAD_MAT_DONE[] = "\nLoading - Complete!\n\n";
-inline constexpr char MATFILE_[] = "Array2D File ";
+inline constexpr char MATFILE_[] = "Matrix File ";
 inline constexpr char COL_SQMAT_ERROR[] = "Column params cannot be used with --square!";
 inline constexpr char OUT_MAX[] = "_out_max";
 inline constexpr char CROPPED_[] = "_cropped_";
@@ -67,7 +67,7 @@ inline constexpr char MB_UNIT[] = " MB";
 inline constexpr char KB_UNIT[] = " KB";
 inline constexpr char BYTES_UNIT[] = " Bytes";
 inline constexpr char FILEGEN_[] = "files generation";
-inline constexpr char MATFILE_GEN_ACTIVATED[] = "Array2D Files Generator activated!";
+inline constexpr char MATFILE_GEN_ACTIVATED[] = "Matrix Files Generator activated!";
 inline constexpr char REQ_SPACE[] = "Required space = ";
 inline constexpr char APPROVED_[] = "OK!";
 inline constexpr char SELECTED[] = " selected";
