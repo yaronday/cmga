@@ -25,7 +25,7 @@
 
 #define PICO_TIMER_VERSION_MAJOR 1
 #define PICO_TIMER_VERSION_MINOR 0
-#define PICO_TIMER_VERSION_PATCH 0
+#define PICO_TIMER_VERSION_PATCH 1
 
 #include <string>
 #include "logger.hpp"
@@ -65,11 +65,11 @@ inline constexpr TimeResult time_scaler(double time_res) {
     };
 
     // Time the function using timeIt
-    time_it("matTranspose", func, 10);
+    picotimer::timeit("matTranspose", func, 5);
 */
 template <typename Func>
-void time_it(const std::string &func_name, Func &&func, uint16_t num_iters = 10,
-             bool printout = false, uint8_t precision = 4) {
+void timeit(const std::string &func_name, Func &&func, uint16_t num_iters = 10,
+            bool printout = false, uint8_t precision = 4) {
 
   if (num_iters == 0) {
     const std::string err_msg =
@@ -91,10 +91,13 @@ void time_it(const std::string &func_name, Func &&func, uint16_t num_iters = 10,
   std::chrono::duration<double> delta_time = end - start;
   auto [avg_value, time_unit] = time_scaler(delta_time.count() / num_iters);
 
-  const std::string fmt_spec =
-      std::format("'{{}}' took {{:.{}f}}{{}} in avg. over {{}} iterations.", precision);
+  const std::string suffix =
+      num_iters == 1 ? "." : std::format(" in avg. over {} iterations.", num_iters);
+
+  const std::string fmt_spec = std::format("'{{}}' took {{:.{}f}}{{}}{}", precision, suffix);
+
   const std::string msg =
-      std::vformat(fmt_spec, std::make_format_args(func_name, avg_value, time_unit, num_iters));
+      std::vformat(fmt_spec, std::make_format_args(func_name, avg_value, time_unit));
 
   if (printout) {
     std::cout << msg << '\n';

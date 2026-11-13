@@ -52,7 +52,6 @@ public:
 
   template <typename... Args>
   static void log(Level level, std::string_view fmt_str, Args &&...args) {
-    // 1. Thread-local work (Parallelized across multiple calling threads)
     const std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     const std::time_t time_t_now = std::chrono::system_clock::to_time_t(now);
     std::tm tm_now{};
@@ -70,11 +69,9 @@ public:
                                  : (level == Level::ERR) ? "ERROR"
                                                          : "INFO";
 
-    // Pre-allocate and format locally with strict std:: boundaries
     const std::string full_layout = std::format("[{}] [{}] {}\n", time_buf, level_str, fmt_str);
     const std::string msg = std::vformat(full_layout, std::make_format_args(args...));
 
-    // 2. Critical Section (Briefly serialized to protect stream state)
     {
       std::lock_guard<std::mutex> lock(get_mutex());
       auto &stream = get_file_stream();

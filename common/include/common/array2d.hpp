@@ -50,7 +50,6 @@ public:
     return data_[row * cols_ + col];
   }
 
-  // Element access with bounds checking in debug mode
   [[nodiscard]] constexpr T &operator()(std::size_t row, std::size_t col) noexcept {
     return const_cast<T &>(std::as_const(*this)(row, col));
   }
@@ -68,10 +67,8 @@ public:
   auto begin() const noexcept { return data_.cbegin(); }
   auto end() const noexcept { return data_.cend(); }
 
-  // if preallocation is needed, this should be called before emplace_back
   void reserve(std::size_t total_elements) { data_.reserve(total_elements); }
 
-  // Core insertion logic handled via std::span to prevent code duplication
   bool emplace_back(std::span<const T> row) {
     if (cols_ == 0) {
       cols_ = row.size();
@@ -83,7 +80,6 @@ public:
     return true;
   }
 
-  // Overload for initializer_list delegating directly to the span implementation
   bool emplace_back(std::initializer_list<T> row) {
     return emplace_back(std::span<const T>(row.begin(), row.size()));
   }
