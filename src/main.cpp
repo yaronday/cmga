@@ -73,7 +73,7 @@ void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &
       auto timed_solver = [&]() {
         solveMccg(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
       };
-      picotimer::time_it(format("solveMccg using {} for {}", algo, filepath), timed_solver, 1);
+      picotimer::timeit(format("solveMccg using {} for {}", algo, filepath), timed_solver, 1);
     }
   }
 }
