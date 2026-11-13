@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 4.4.5)
 
 project(cmga CXX)
 
+if(WIN32)
+    add_compile_definitions(NOMINMAX)
+endif()
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_STANDARD 20)
