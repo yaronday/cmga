@@ -48,7 +48,7 @@ inline constexpr char CODES_W_MAX_SIZE[] = "Color codes with max size of ";
 inline constexpr char COLOR_CODE_TXT[] = "Color code ";
 inline constexpr char MULTIPLE_REGIONS[] = " (multiple regions)\n";
 inline constexpr char F_MAXCOLOR_PRFIX[] = "_c";
-inline constexpr char PROCESSING_DATA[] = "Processing data...\n";
+inline constexpr char DATAPROC[] = "Processing data...\n";
 
 // File Generator defaults; same init values for cols
 inline constexpr int ROWS_MIN_V = 1;

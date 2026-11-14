@@ -64,7 +64,7 @@ void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &
   std::vector<std::pair<std::string, Array2D<uint8_t>>> data = mfh.fLoadMatrices();
   const int num_of_matrices = static_cast<int>(data.size());
   if (num_of_matrices > 0) {
-    console::formatTxt(PROCESSING_DATA, LIGHT_CYAN);
+    console::formatTxt(DATAPROC, LIGHT_CYAN);
     for (int k = 0; k < num_of_matrices; k++) {
       std::string filepath = data[k].first;
       mfh.currMat = std::move(data[k].second);
@@ -73,7 +73,7 @@ void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &
       auto timed_solver = [&]() {
         solver(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
       };
-      picotimer::timeit(format("solveMccg using {} for {}", algo, filepath), timed_solver, 1);
+      picotimer::timeit(format("Solver using {} for {}", algo, filepath), timed_solver, 1);
     }
   }
 }
