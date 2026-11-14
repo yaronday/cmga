@@ -59,7 +59,7 @@ color codes. UF visualizes those regions with distinct node colors:
 | Option                   | Description                                                                                                                   |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
 | `--root <dir>`           | Input directory and output destination.                                                                                       |
-| `--algo <DFS\|UF\|BOTH>` | Select the algorithm; default is `BOTH`.                                                                                      |
+| `--algo <DFS\|UF\|BOTH>` | Select the algorithm; default is `UF`.                                                                                        |
 | `--mat <matrices>`       | Provide one or more C/C++-style matrices. Cell values must be integers from 1 to 9.                                           |
 | `--paint`                | Paint the largest connected region.                                                                                           |
 | `--no_color`             | Paint using black and white symbols.                                                                                          |
