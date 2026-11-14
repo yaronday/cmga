@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   std::string matStr;
 
   DfsColorGrid dfsCG(mfh);
-  UnionFindColorGrid ufCG(mfh);
+  UFColorGrid ufCG(mfh);
 
   parseCLIargs(argc, argv, matStr, algoChoice, mfh, paint, colors, crop, visEn, forceVis,
                connColor);
@@ -52,12 +52,12 @@ void solver(DfsColorGrid &dfsCG, Array2D<uint8_t> &mat, bool &paint, bool &color
   dfsCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
 }
 
-void solver(UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
+void solver(UFColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
             const std::string &filepath) {
   ufCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
 }
 
-void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &mfh,
+void processData(DfsColorGrid &dfsCG, UFColorGrid &ufCG, MatFileHandler &mfh,
                  const std::string &algo, bool &paint, bool &colors, bool crop) {
   auto data = mfh.fLoadMatrices();
 

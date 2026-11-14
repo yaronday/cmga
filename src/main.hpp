@@ -8,10 +8,10 @@
 void solver(DfsColorGrid &dfsCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
             const std::string &filepath);
 
-void solver(UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
+void solver(UFColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
             const std::string &filepath);
 
-void runSolver(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat,
+void runSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
                const std::string &algo, bool &paint, bool &colors, bool crop,
                const std::string &filepath) {
 
@@ -25,7 +25,7 @@ void runSolver(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &
   }
 }
 
-void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &mfh,
+void processData(DfsColorGrid &dfsCG, UFColorGrid &ufCG, MatFileHandler &mfh,
                  const std::string &algo, bool &paint, bool &colors, bool crop);
 
 template <typename Solver>
@@ -34,7 +34,7 @@ void timedSolver(std::string_view algo, std::string_view filepath, Solver &&solv
                     std::forward<Solver>(solverFn), 1);
 }
 
-void timedSolver(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat,
+void timedSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
                  const std::string &algo, bool &paint, bool &colors, bool crop,
                  const std::string &filepath) {
 

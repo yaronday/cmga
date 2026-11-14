@@ -6,7 +6,7 @@
 #include <fstream> // IWYU pragma: keep
 #include <string>
 
-class UnionFindColorGrid : public ColorGrid {
+class UFColorGrid : public ColorGrid {
 private:
   const std::string algo = UF_;
 
@@ -15,9 +15,9 @@ public:
   bool forceVis;         // Force visualizer even if matrix exceeds threshold
   std::string connColor; // node connector color (x11 color str or hex code)
 
-  UnionFindColorGrid() = delete;
+  UFColorGrid() = delete;
 
-  explicit UnionFindColorGrid(MatFileHandler &handler);
+  explicit UFColorGrid(MatFileHandler &handler);
 
   virtual int calcMaxConnectedColor() override;
 
