@@ -99,7 +99,6 @@ void ColorGrid::fWriteCropped(const std::string &filename, int n, int m,
   int minRow = n, maxRow = -1, minCol = m, maxCol = -1;
   calcBoundingBox(minRow, maxRow, minCol, maxCol, n, m, cellCondition);
 
-  // Construct a unique file name based on the bounding box coordinates
   std::string filepath = updatePath(filename, maxSize, maxColor, minRow, alignCol(minCol), maxRow,
                                     alignCol(maxCol), algo);
   fWriteResults(filepath, n, m, cellCondition, getCellValue, true, minRow, maxRow, minCol, maxCol);

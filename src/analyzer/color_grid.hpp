@@ -35,7 +35,7 @@ public:
   int n, m, maxSize, maxColor, minVal, maxVal;
   std::string filename;
 
-  // 8-neighbour connectivity
+  // 8-neighbor connectivity
   std::vector<int> dr = {1, -1, 0, 0, 1, -1, -1, 1};
   std::vector<int> dc = {0, 0, 1, -1, -1, -1, 1, 1};
 
@@ -84,6 +84,5 @@ public:
     fWrite(buffer, filepath, DEFAULT_INFO, true);
   }
 
-  // update MatFileHandler filename member
   void updateMfhFilename(const std::string &filepath);
 };

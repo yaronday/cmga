@@ -225,7 +225,6 @@ void UnionFindColorGrid::fWriteCropped(const std::string &filename, UnionFind &u
       int minRow = n, maxRow = -1, minCol = m, maxCol = -1;
       calcBoundingBox(minRow, maxRow, minCol, maxCol, n, m, regionCond);
 
-      // Construct a unique file name based on the bounding box coordinates
       const std::string filepath = updatePath(filename, maxSize, colorCode, minRow,
                                               alignCol(minCol), maxRow, alignCol(maxCol), algo);
 
