@@ -97,9 +97,9 @@ void mainMenuDisplay() {
                      LIGHT_GREEN);
 }
 
-void handleArgs(int argc, char *argv[], std::string &matStr, std::string &algoChoice,
-                MatFileHandler &mfh, bool &paint, bool &colors, bool &crop, bool &visEn,
-                bool &forceVis, std::string &connColor) {
+void parseCLIargs(int argc, char *argv[], std::string &matStr, std::string &algoChoice,
+                  MatFileHandler &mfh, bool &paint, bool &colors, bool &crop, bool &visEn,
+                  bool &forceVis, std::string &connColor) {
 
   int min_rows = MIN_ROW_V;
   int max_rows = MAX_ROW_V;
@@ -395,7 +395,7 @@ void algoNotifier(const std::string &algo) {
   console::formatTxt(std::format("{}{}{}!\n", algo, algorithmText, SELECTED), LIGHT_GREEN);
 }
 
-void visualizerNotifier(const std::string &algo, bool &visEnable) {
+void visNotifier(const std::string &algo, bool &visEnable) {
   if (visEnable) {
     if (algo != UF_ && algo != BOTH_) {
       // warn the user

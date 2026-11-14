@@ -121,5 +121,6 @@ inline constexpr char GRAPHVIZ_CHECK[] = "dot -V >/dev/null 2>&1";
 
 inline constexpr char FONT_NAME[] = "Arial";
 inline constexpr char FONT_COLOR[] = "black";
+// unique root node settings
 inline constexpr double R_FONT_SIZE = 16.00;
 inline constexpr char R_STROKE_COLOR[] = "cyan";

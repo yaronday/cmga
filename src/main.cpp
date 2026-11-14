@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
   bool forceVis;
   std::string connColor;
 
-  signal(SIGINT, console::handleSignal);
+  signal(SIGINT, console::signalHandler);
 
   MatFileHandler mfh;
 
@@ -20,8 +20,8 @@ int main(int argc, char *argv[]) {
   DfsColorGrid dfsCG(mfh);
   UnionFindColorGrid ufCG(mfh);
 
-  // Parse CLI arguments
-  handleArgs(argc, argv, matStr, algoChoice, mfh, paint, colors, crop, visEn, forceVis, connColor);
+  parseCLIargs(argc, argv, matStr, algoChoice, mfh, paint, colors, crop, visEn, forceVis,
+               connColor);
 
   ufCG.visualizerEn = visEn;
   ufCG.forceVis = forceVis;
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
   algoNotifier(algoChoice);
 
-  visualizerNotifier(algoChoice, visEn);
+  visNotifier(algoChoice, visEn);
 
   if (matStr.empty())
     processData(dfsCG, ufCG, mfh, algoChoice, paint, colors, crop);
@@ -40,16 +40,16 @@ int main(int argc, char *argv[]) {
     for (Array2D<uint8_t> &mat : matList) {
       mfh.currMat = mat;
       mfh.parsedMatIdx++;
-      solveMccg(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop);
+      solver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop);
       mfh.fWriteMat(mfh.filename, true);
     }
   }
   return 0;
 }
 
-void solveMccg(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat,
-               const std::string &algo, bool &paint, bool &colors, bool crop,
-               const std::string &filepath) {
+void solver(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat,
+            const std::string &algo, bool &paint, bool &colors, bool crop,
+            const std::string &filepath) {
 
   if (algo == DFS_ || algo == BOTH_) {
     dfsCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
@@ -71,7 +71,7 @@ void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &
       console::formatTxt(format("\n{}){}\n", k + 1, filepath), LIGHT_CYAN);
 
       auto timed_solver = [&]() {
-        solveMccg(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
+        solver(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
       };
       picotimer::timeit(format("solveMccg using {} for {}", algo, filepath), timed_solver, 1);
     }

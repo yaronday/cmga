@@ -32,41 +32,37 @@ struct ErrorContext {
 
   std::optional<std::string> exceptionMsg;
 
-  // Default constructor
   ErrorContext() = default;
 
-  // Constructor for INVALID_CHAR error
+  // INVALID_CHAR error
   ErrorContext(int r, int c, char ch) : invalidChar(ch), row(r), col(c) {}
 
-  // Constructor for INVALID_RANGE error
+  // INVALID_RANGE error
   ErrorContext(int value, const std::string &arg, int min, int max)
       : invalidValue(value), argName(arg), minValue(min), maxValue(max) {}
 
-  // Constructor for ROW_LEN_MISMATCH error
+  // ROW_LEN_MISMATCH error
   ErrorContext(int r) : row(r) {}
 
-  // constructor for MULTIDIGIT error
-  // (basically the whole value could be evaluated, triggering an invalid range
-  // error, but this way is simpler and faster)
+  // MULTIDIGIT error
   ErrorContext(int r, int c, int value) : row(r), col(c), invalidValue(value) {}
 
-  // constructor for Arg releated or NOT_NUMERICAL error
+  // Arg-related or NOT_NUMERICAL error
   ErrorContext(const std::string &arg) : argName(arg) {}
 
-  // constructor for filesize limit
+  // filesize limit
   ErrorContext(double filesize, double maxSize) : size(filesize), sizeLimit(maxSize) {}
 
-  // constructor for image format error
+  // image format error
   ErrorContext(std::string value, const std::string &arg) : invalidStr(value), argName(arg) {}
 
-  // Constructor for exceptions
+  // general exceptions
   ErrorContext(const std::exception &ex) : exceptionMsg(ex.what()) {}
 };
 
-// Function to generate error messages based on error code and context
 inline std::string getErrMsg(ErrCode code, const ErrorContext &context) {
   std::string msg;
-  msg.reserve(64); // Avoid reallocations for typical error message lengths
+  msg.reserve(64);
 
   switch (code) {
   case ErrCode::INVALID_CHAR:
@@ -94,8 +90,7 @@ inline std::string getErrMsg(ErrCode code, const ErrorContext &context) {
       msg += std::format("{}{}", AT_ROW, *context.row);
     break;
 
-  case ErrCode::INVALID_ALGO_SELECTION: // has a special handler inside
-                                        // cli_utils
+  case ErrCode::INVALID_ALGO_SELECTION:
     msg = INV_ALGO_ERR;
     break;
 

@@ -13,9 +13,9 @@ void mainMenuDisplay();
 
 void cliErrHandler(bool menu_disp = false);
 
-void handleArgs(int argc, char *argv[], std::string &matStr, std::string &algoChoice,
-                MatFileHandler &mfh, bool &paint, bool &colors, bool &crop, bool &visEn,
-                bool &forceVis, std::string &connColor);
+void parseCLIargs(int argc, char *argv[], std::string &matStr, std::string &algoChoice,
+                  MatFileHandler &mfh, bool &paint, bool &colors, bool &crop, bool &visEn,
+                  bool &forceVis, std::string &connColor);
 
 void validateAndAssign(int &variable, const std::string &arg, int min_value, int max_value,
                        std::map<std::string, std::string> &args_map);
@@ -26,7 +26,7 @@ bool isInvalidAlgoChoice(const std::string &algoChoice);
 
 void algoNotifier(const std::string &algo);
 
-void visualizerNotifier(const std::string &algo, bool &visEnable);
+void visNotifier(const std::string &algo, bool &visEnable);
 
 void title_and_ver();
 
