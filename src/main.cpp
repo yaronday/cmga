@@ -40,40 +40,35 @@ int main(int argc, char *argv[]) {
     for (Array2D<uint8_t> &mat : matList) {
       mfh.currMat = mat;
       mfh.parsedMatIdx++;
-      solver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop);
+      timedSolver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop, mfh.filename);
       mfh.fWriteMat(mfh.filename, true);
     }
   }
   return 0;
 }
 
-void solver(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat,
-            const std::string &algo, bool &paint, bool &colors, bool crop,
+void solver(DfsColorGrid &dfsCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
             const std::string &filepath) {
+  dfsCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
+}
 
-  if (algo == DFS_ || algo == BOTH_) {
-    dfsCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
-  }
-  if (algo == UF_ || algo == BOTH_) {
-    ufCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
-  }
+void solver(UnionFindColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
+            const std::string &filepath) {
+  ufCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
 }
 
 void processData(DfsColorGrid &dfsCG, UnionFindColorGrid &ufCG, MatFileHandler &mfh,
                  const std::string &algo, bool &paint, bool &colors, bool crop) {
-  std::vector<std::pair<std::string, Array2D<uint8_t>>> data = mfh.fLoadMatrices();
-  const int num_of_matrices = static_cast<int>(data.size());
-  if (num_of_matrices > 0) {
-    console::formatTxt(DATAPROC, LIGHT_CYAN);
-    for (int k = 0; k < num_of_matrices; k++) {
-      std::string filepath = data[k].first;
-      mfh.currMat = std::move(data[k].second);
-      console::formatTxt(format("\n{}){}\n", k + 1, filepath), LIGHT_CYAN);
+  auto data = mfh.fLoadMatrices();
 
-      auto timed_solver = [&]() {
-        solver(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
-      };
-      picotimer::timeit(format("Solver using {} for {}", algo, filepath), timed_solver, 1);
-    }
+  if (data.empty())
+    return;
+
+  console::formatTxt(DATAPROC, LIGHT_CYAN);
+  for (size_t k = 0; k < data.size(); ++k) {
+    auto &[filepath, matrix] = data[k];
+    mfh.currMat = std::move(matrix);
+    console::formatTxt(format("\n{}){}\n", k + 1, filepath), LIGHT_CYAN);
+    timedSolver(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
   }
 }
