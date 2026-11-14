@@ -26,7 +26,6 @@ protected:
                          int minCol, int maxRow, int maxCol, const std::string &algo,
                          bool txt = EN_TXT);
 
-  // calc bounding box or minimum bounding rectangle (MBR)
   void calcBoundingBox(int &minRow, int &maxRow, int &minCol, int &maxCol, int n, int m,
                        const std::function<bool(int, int)> &cellCondition);
 
@@ -36,16 +35,14 @@ public:
   int n, m, maxSize, maxColor, minVal, maxVal;
   std::string filename;
 
-  // 8-neighbour directions for DFS / UF traversal
+  // 8-neighbor connectivity
   std::vector<int> dr = {1, -1, 0, 0, 1, -1, -1, 1};
   std::vector<int> dc = {0, 0, 1, -1, -1, -1, 1, 1};
 
   virtual int calcMaxConnectedColor() = 0;
 
-  // Default constructor deleted to enforce passing MatFileHandler
   ColorGrid() = delete;
 
-  // Constructor with MatFileHandler initialization
   explicit ColorGrid(MatFileHandler &handler);
 
   void init(Array2D<uint8_t> &mat);
@@ -87,6 +84,5 @@ public:
     fWrite(buffer, filepath, DEFAULT_INFO, true);
   }
 
-  // update MatFileHandler filename member
   void updateMfhFilename(const std::string &filepath);
 };

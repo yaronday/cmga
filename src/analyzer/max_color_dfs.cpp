@@ -35,7 +35,6 @@ int DfsColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint, bool 
           maxSize = curr_max;
           maxColor = currValue;
 
-          // The temp std::vector receives the previous best component's allocated capacity.
           xy_coord_list.swap(curr_xy_coord_list);
         }
       }

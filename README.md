@@ -1,10 +1,7 @@
 # Color Matrix Genalyzer (CMGA)
 
-CMGA is a C++20 CLI tool that finds the max connected
-region in one or more matrices. It supports depth-first search (DFS) and
-Union-Find (UF), uses 8-neighbor connectivity, and can paint results, crop
-regions, or visualize the UF structure. UF preserves every region tied for
-largest size; DFS returns one largest region.
+CMGA is a C++20 CLI tool that finds the largest region of same-color cells connected by 8-neighbor adjacency in one or more matrices.
+It supports DFS and Union-Find (UF). Its UF implementation detects all regions with the maximal connected cell count, while DFS detects one largest region. Detected regions are saved as matrix text files, either full-size with other cells blank or cropped with bounding-box coordinates relative to the original matrix. CMGA can also paint results or visualize connected same-color cells.
 
 ## Build
 
@@ -52,7 +49,7 @@ cmga --root data/multicolor --algo UF --crop --vis
 
 ### UF visualization example
 
-The sample matrix in [examples/eq_size/mat_5_5_1_4.txt](examples/eq_size/mat_5_5_1_4.txt) has equally large connected regions (size 4) across three
+The tiny matrix in [examples/eq_size/mat_5_5_1_4.txt](examples/eq_size/mat_5_5_1_4.txt) has equally large connected regions (size 4) across three
 color codes. UF visualizes those regions with distinct node colors:
 
 ![Graphviz visualization of three color codes with equally large connected regions](examples/eq_size/mat_5_5_1_4_out_max4_c2_UF_tree.svg)
@@ -62,7 +59,7 @@ color codes. UF visualizes those regions with distinct node colors:
 | Option                   | Description                                                                                                                   |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
 | `--root <dir>`           | Input directory and output destination.                                                                                       |
-| `--algo <DFS\|UF\|BOTH>` | Select the algorithm; default is `BOTH`.                                                                                      |
+| `--algo <DFS\|UF\|BOTH>` | Select the algorithm; default is `UF`.                                                                                        |
 | `--mat <matrices>`       | Provide one or more C/C++-style matrices. Cell values must be integers from 1 to 9.                                           |
 | `--paint`                | Paint the largest connected region.                                                                                           |
 | `--no_color`             | Paint using black and white symbols.                                                                                          |
@@ -92,16 +89,16 @@ cmga filegen --root data/generated --minr 10 --maxr 100 --r_inc 10 \
 cmga filegen --sq --minr 100 --maxr 500 --r_inc 100 --ovr
 ```
 
-| Option                        | Description                                                         |
-| ----------------------------- | ------------------------------------------------------------------- |
-| `--root <dir>`                | Destination directory.                                              |
-| `--sq`                        | Generate square matrices; do not use with column options.           |
-| `--minr`, `--maxr`, `--r_inc` | Row range and increment.                                            |
-| `--minc`, `--maxc`, `--c_inc` | Column range and increment.                                         |
-| `--minv`, `--maxv`            | Minimum and maximum cell values; minimum must be less than maximum. |
-| `--csv`                       | Write CSV files instead of space-separated text files.              |
-| `--confirm`                   | Skip the interactive save confirmation. Use with caution.           |
-| `--ovr`                       | Allow overwriting existing files.                                   |
+| Option                        | Description                                               |
+| ----------------------------- | --------------------------------------------------------- |
+| `--root <dir>`                | Destination directory.                                    |
+| `--sq`                        | Generate square matrices; do not use with column options. |
+| `--minr`, `--maxr`, `--r_inc` | Row range and increment.                                  |
+| `--minc`, `--maxc`, `--c_inc` | Column range and increment.                               |
+| `--minv`, `--maxv`            | Minimum and maximum cell values.                          |
+| `--csv`                       | Write CSV files instead of space-separated text files.    |
+| `--confirm`                   | Skip the interactive save confirmation. Use with caution. |
+| `--ovr`                       | Allow overwriting existing files.                         |
 
 See [cmga_filetree.txt](cmga_filetree.txt) for the repository layout.
 

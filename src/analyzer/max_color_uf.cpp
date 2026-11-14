@@ -1,8 +1,8 @@
 ﻿#include "max_color_uf.hpp"
 
 UnionFindColorGrid::UnionFindColorGrid(MatFileHandler &handler) : ColorGrid(handler) {
-  maxColorSet.clear();     // track max color codes
-  colorRegionsMap.clear(); // track regions for each color
+  maxColorSet.clear();
+  colorRegionsMap.clear();
   visualizerEn = false;
   forceVis = FORCE_VIS;
   connColor = CONN_COLOR;
@@ -15,7 +15,6 @@ int UnionFindColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint,
 
   init(mat);
 
-  // Reset result state for every invocation.
   maxSize = 0;
   maxColorSet.clear();
   colorRegionsMap.clear();
@@ -24,10 +23,8 @@ int UnionFindColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint,
 
   UnionFind uf(matSize);
 
-  // Cache the contiguous matrix data pointer.
   const uint8_t *mat_data = mat.data();
 
-  // 1: Build all connected components.
   for (int row = 0; row < n; ++row) {
     for (int col = 0; col < m; ++col) {
       const int currCell = row * m + col;
@@ -39,7 +36,6 @@ int UnionFindColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint,
     }
   }
 
-  // 2: Find all maximum-sized components using final roots.
   for (int i = 0; i < matSize; ++i) {
     if (uf.parent[i] != i)
       continue;
@@ -53,7 +49,6 @@ int UnionFindColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint,
     }
 
     if (componentSize == maxSize) {
-      // Safe because unions are performed only between equal colors.
       const uint8_t componentColor = mat_data[i];
 
       maxColorSet.insert(componentColor);
@@ -61,7 +56,6 @@ int UnionFindColorGrid::calcMaxConnectedColor(Array2D<uint8_t> &mat, bool paint,
     }
   }
 
-  // Select the smallest color among tied maximum colors.
   maxColor = *maxColorSet.begin();
 
   updateMfhFilename(filepath);
@@ -143,7 +137,6 @@ void UnionFindColorGrid::visualizeUF(UnionFind &uf, int maxSize, const std::stri
   dotFile << DOTFILECLOSER;
   dotFile.close();
 
-  // Render an image from a dot file
   std::string renderCmd =
       std::format("{} -T{} \"{}\" -o \"{}\"", DOT_, SVG_, dotFilePathStr, outFilePathStr);
 
@@ -157,7 +150,7 @@ void UnionFindColorGrid::visualizeUF(UnionFind &uf, int maxSize, const std::stri
   }
 }
 
-// Notify extra max colors regions (unique method for UF algorithm)
+// Notify extra max colors regions (unique method for UF implementation)
 // Useful for multiple equally-sized max regions with different color codes
 void UnionFindColorGrid::notifyMaxColorRegions(
     const std::string &filename, int maxSize, const std::unordered_set<int> &maxColorSet,
@@ -193,7 +186,6 @@ void UnionFindColorGrid::processAdjCells(int row, int col, const Array2D<uint8_t
     const int newRow = row + dr[i];
     const int newCol = col + dc[i];
 
-    // Retain upper-left, up, upper-right and left.
     if (newRow > row || (newRow == row && newCol >= col)) {
       continue;
     }
@@ -217,9 +209,7 @@ void UnionFindColorGrid::fWriteCropped(const std::string &filename, UnionFind &u
                                        const std::function<bool(int, int)> &cellCondition,
                                        const std::function<char(int, int)> &getCellValue) {
 
-  // Iterate through all color codes in maxColorSet
   for (int colorCode : maxColorSet) {
-    // Iterate through all regions corresponding to this color code
     const auto &regions = colorRegionsMap.at(colorCode);
     for (int root : regions) {
 
@@ -235,7 +225,6 @@ void UnionFindColorGrid::fWriteCropped(const std::string &filename, UnionFind &u
       int minRow = n, maxRow = -1, minCol = m, maxCol = -1;
       calcBoundingBox(minRow, maxRow, minCol, maxCol, n, m, regionCond);
 
-      // Construct a unique file name based on the bounding box coordinates
       const std::string filepath = updatePath(filename, maxSize, colorCode, minRow,
                                               alignCol(minCol), maxRow, alignCol(maxCol), algo);
 

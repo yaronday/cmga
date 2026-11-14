@@ -68,9 +68,8 @@ inline constexpr char NONNUMERIC_ERR[] = " is either not numerical or of an inva
 inline constexpr char INV_CHAR_ERR[] = "Invalid character";
 inline constexpr char INV_RANGE_ERR[] = "Invalid range";
 
-inline constexpr char GRAPHVIZ_NA_ERR[] =
-    "The visualizer must have Graphviz installed and configured as system env "
-    "variable";
+inline constexpr char GRAPHVIZ_NA_ERR[] = "Graphviz is missing or not added to PATH";
+
 inline constexpr char GRAPHVIZ_MAT_LIMIT[] = "Visualizer deactivated: Matrix max(m, n) > ";
 inline constexpr char RENDER_CMD_FAILED[] = "Render command failed - \n";
 inline constexpr char INV_CONN_COLOR_ERR[] = "Invalid connector color";

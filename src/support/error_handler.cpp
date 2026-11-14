@@ -3,7 +3,7 @@
 
 namespace err {
 
-// Basic error handler (no parametrized context)
+// Basic error handler
 void handle(ErrCode code, const ErrorContext &context) {
   console::formatTxt(getErrMsg(code, context), LIGHT_RED);
 }

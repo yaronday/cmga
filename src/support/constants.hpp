@@ -2,7 +2,7 @@
 
 // Title & Version
 inline constexpr char COPYRIGHT[] = "\nCopyright (C) Yaron Dayan 2026\n";
-inline constexpr char VERSION[] = "v1.0.2";
+inline constexpr char VERSION[] = "v1.1.0";
 inline constexpr char TITLE[] = "Color Matrix Genalyzer (CMGA) ";
 
 // Matrix String
@@ -48,7 +48,7 @@ inline constexpr char CODES_W_MAX_SIZE[] = "Color codes with max size of ";
 inline constexpr char COLOR_CODE_TXT[] = "Color code ";
 inline constexpr char MULTIPLE_REGIONS[] = " (multiple regions)\n";
 inline constexpr char F_MAXCOLOR_PRFIX[] = "_c";
-inline constexpr char PROCESSING_DATA[] = "Processing data...\n";
+inline constexpr char DATAPROC[] = "Processing data...\n";
 
 // File Generator defaults; same init values for cols
 inline constexpr int ROWS_MIN_V = 1;
@@ -121,5 +121,6 @@ inline constexpr char GRAPHVIZ_CHECK[] = "dot -V >/dev/null 2>&1";
 
 inline constexpr char FONT_NAME[] = "Arial";
 inline constexpr char FONT_COLOR[] = "black";
+// unique root node settings
 inline constexpr double R_FONT_SIZE = 16.00;
 inline constexpr char R_STROKE_COLOR[] = "cyan";

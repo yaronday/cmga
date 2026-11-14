@@ -15,7 +15,6 @@ bool ColorGrid::isValid(int row, int col, int n, int m) {
   return (row >= 0 && row < n && col >= 0 && col < m);
 }
 
-// update filename member
 void ColorGrid::setFileName(const std::string &path, std::vector<int> &matParams) {
   filename =
       path.empty() ? std::format("{}/{}", mfh.destpath, mfh.updateStrByIntVect(matParams)) : path;
@@ -47,7 +46,6 @@ std::string ColorGrid::updatePath(const std::string &filename, int maxSize, int 
   return fGenPath(filename, suffix, txt);
 }
 
-// Column alignment, assuming a single char delimiter (e.g. blankspace, comma)
 int ColorGrid::alignCol(int &col) { return (col % 2) ? 2 * col + 1 : 2 * col; }
 
 void ColorGrid::paintResultsArea(Array2D<uint8_t> &mat, bool colors,
@@ -70,7 +68,6 @@ void ColorGrid::paintResultsArea(Array2D<uint8_t> &mat, bool colors,
   }
 }
 
-// calc bounding box or minimum bounding rectangle (MBR)
 void ColorGrid::calcBoundingBox(int &minRow, int &maxRow, int &minCol, int &maxCol, int n, int m,
                                 const std::function<bool(int, int)> &cellCondition) {
   for (int r = 0; r < n; r++) {
@@ -102,7 +99,6 @@ void ColorGrid::fWriteCropped(const std::string &filename, int n, int m,
   int minRow = n, maxRow = -1, minCol = m, maxCol = -1;
   calcBoundingBox(minRow, maxRow, minCol, maxCol, n, m, cellCondition);
 
-  // Construct a unique file name based on the bounding box coordinates
   std::string filepath = updatePath(filename, maxSize, maxColor, minRow, alignCol(minCol), maxRow,
                                     alignCol(maxCol), algo);
   fWriteResults(filepath, n, m, cellCondition, getCellValue, true, minRow, maxRow, minCol, maxCol);

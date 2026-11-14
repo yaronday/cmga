@@ -24,7 +24,7 @@ extern HANDLE handle;
 
 void resetConsoleColor();
 
-void handleSignal(int);
+void signalHandler(int);
 
 void formatTxt(const std::string &txt, const unsigned short &colorCode = DEFAULT_COLOR,
                const std::string &ending = "\n");

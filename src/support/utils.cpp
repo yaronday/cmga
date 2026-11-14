@@ -7,14 +7,14 @@ namespace utils {
 
 std::string toUpper(std::string s) {
   for (char &c : s) {
-    c = toupper(static_cast<unsigned char>(c)); // Ensure correct type
+    c = toupper(static_cast<unsigned char>(c));
   }
   return s;
 }
 
 std::string toLower(std::string s) {
   for (char &c : s) {
-    c = tolower(static_cast<unsigned char>(c)); // Ensure correct type
+    c = tolower(static_cast<unsigned char>(c));
   }
   return s;
 }

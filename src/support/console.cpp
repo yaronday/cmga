@@ -29,12 +29,11 @@ void formatTxt(const std::string &txt, const unsigned short &colorCode, const st
 
 #endif
 
-// Signal handler to reset terminal color
-void handleSignal(int signal) {
+void signalHandler(int signal) {
   if (signal == SIGINT) {
     std::cout << ABORTED_ << "!\n\n";
-    resetConsoleColor(); // Reset color before exiting
-    exit(0);             // Exit the program
+    resetConsoleColor();
+    exit(0);
   }
 }
 
