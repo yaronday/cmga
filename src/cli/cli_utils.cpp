@@ -25,8 +25,7 @@ void mainMenuDisplay() {
                    "                 Values allowed: integers {}.\n",
                    P_MATRIX, P_MATRIX, MATSTR, err::withinRange(MIN_V_LIMIT, MAX_V_LIMIT))
             << std::format("  {:<12} : Union-Find Roots visualizer. Limited by design "
-                           "choice to "
-                           "small matrices with max(rows, cols) <= {}).\n",
+                           "choice to small matrices with max(rows, cols) <= {}).\n",
                            P_VISUALIZER, VIS_MAT_THR)
             << std::format("  {:<12} : Force visualizer even if matrix exceeds "
                            "threshold. Use with caution.\n"
@@ -34,11 +33,10 @@ void mainMenuDisplay() {
                            "System Env. Path.\n",
                            P_FORCE_VIS)
             << std::format("  {:<12} : Color of visualizer node connectors, specified by "
-                           "X11 color std::string or hex code, e.g.\n"
-                           "                --conn_color blue",
+                           "X11 color std::string or hex code, e.g. --conn_color blue\n",
                            P_CONN_COLOR)
-            << std::format("  {:<12} : Save max regions (inc. their original "
-                           "coordinates) into files. Ignored if painting is used.\n",
+            << std::format("  {:<12} : Save max regions, inc. their original "
+                           "coordinates, to files. Ignored if painting is used.\n",
                            P_CROP);
   console::formatTxt(
       std::format("  {} or {} or {} : Display this help menu.", P_HELP, P_H, P_H_WIN),
