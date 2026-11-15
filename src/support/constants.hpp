@@ -2,7 +2,7 @@
 
 // Title & Version
 inline constexpr char COPYRIGHT[] = "\nCopyright (C) Yaron Dayan 2026\n";
-inline constexpr char VERSION[] = "v1.1.3";
+inline constexpr char VERSION[] = "v1.1.4";
 inline constexpr char TITLE[] = "Color Matrix Genalyzer (CMGA) ";
 
 // Matrix String

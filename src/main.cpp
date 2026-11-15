@@ -72,3 +72,30 @@ void processData(DfsColorGrid &dfsCG, UFColorGrid &ufCG, MatFileHandler &mfh,
     timedSolver(dfsCG, ufCG, mfh.currMat, algo, paint, colors, crop, filepath);
   }
 }
+
+void runSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
+               const std::string &algo, bool &paint, bool &colors, bool crop,
+               const std::string &filepath) {
+
+  if (algo == DFS_) {
+    solver(dfsCG, mat, paint, colors, crop, filepath);
+  } else if (algo == UF_) {
+    solver(ufCG, mat, paint, colors, crop, filepath);
+  } else if (algo == BOTH_) {
+    solver(dfsCG, mat, paint, colors, crop, filepath);
+    solver(ufCG, mat, paint, colors, crop, filepath);
+  }
+}
+
+void timedSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
+                 const std::string &algo, bool &paint, bool &colors, bool crop,
+                 const std::string &filepath) {
+
+  if (algo == BOTH_) {
+    timedSolver(DFS_, filepath, [&] { solver(dfsCG, mat, paint, colors, crop, filepath); });
+    timedSolver(UF_, filepath, [&] { solver(ufCG, mat, paint, colors, crop, filepath); });
+  } else {
+    timedSolver(algo, filepath,
+                [&] { runSolver(dfsCG, ufCG, mat, algo, paint, colors, crop, filepath); });
+  }
+}
