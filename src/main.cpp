@@ -7,22 +7,20 @@ int main(int argc, char *argv[]) {
 
   std::string algoChoice;
 
-  bool visEn;
-  bool forceVis;
+  bool visEn = false;
+  bool forceVis = false;
   std::string connColor;
 
-  signal(SIGINT, console::signalHandler);
+  std::signal(SIGINT, console::signalHandler);
 
   MatFileHandler mfh;
-
   std::string matStr;
-
-  DfsColorGrid dfsCG(mfh);
-  UFColorGrid ufCG(mfh);
 
   parseCLIargs(argc, argv, matStr, algoChoice, mfh, paint, colors, crop, visEn, forceVis,
                connColor);
 
+  DfsColorGrid dfsCG(mfh);
+  UFColorGrid ufCG(mfh);
   ufCG.visualizerEn = visEn;
   ufCG.forceVis = forceVis;
   ufCG.connColor = connColor;
@@ -34,11 +32,10 @@ int main(int argc, char *argv[]) {
   if (matStr.empty())
     processData(dfsCG, ufCG, mfh, algoChoice, paint, colors, crop);
   else {
-    std::vector<Array2D<uint8_t>> matList;
     mfh.overwrite = true;
-    matList = mfh.parseMatrices(matStr);
-    for (Array2D<uint8_t> &mat : matList) {
-      mfh.currMat = mat;
+    auto matList = mfh.parseMatrices(matStr);
+    for (auto &mat : matList) {
+      mfh.currMat = std::move(mat);
       mfh.parsedMatIdx++;
       timedSolver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop, {});
       mfh.fWriteMat(mfh.filename, true);
@@ -47,18 +44,18 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-void solver(DfsColorGrid &dfsCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
+void solver(DfsColorGrid &dfsCG, Array2D<uint8_t> &mat, bool paint, bool colors, bool crop,
             const std::string &filepath) {
   dfsCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
 }
 
-void solver(UFColorGrid &ufCG, Array2D<uint8_t> &mat, bool &paint, bool &colors, bool crop,
+void solver(UFColorGrid &ufCG, Array2D<uint8_t> &mat, bool paint, bool colors, bool crop,
             const std::string &filepath) {
   ufCG.calcMaxConnectedColor(mat, paint, colors, filepath, crop);
 }
 
 void processData(DfsColorGrid &dfsCG, UFColorGrid &ufCG, MatFileHandler &mfh,
-                 const std::string &algo, bool &paint, bool &colors, bool crop) {
+                 const std::string &algo, bool paint, bool colors, bool crop) {
   auto data = mfh.fLoadMatrices();
 
   if (data.empty())
@@ -74,7 +71,7 @@ void processData(DfsColorGrid &dfsCG, UFColorGrid &ufCG, MatFileHandler &mfh,
 }
 
 void runSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
-               const std::string &algo, bool &paint, bool &colors, bool crop,
+               const std::string &algo, bool paint, bool colors, bool crop,
                const std::string &filepath) {
 
   if (algo == DFS_) {
@@ -88,7 +85,7 @@ void runSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
 }
 
 void timedSolver(DfsColorGrid &dfsCG, UFColorGrid &ufCG, Array2D<uint8_t> &mat,
-                 const std::string &algo, bool &paint, bool &colors, bool crop,
+                 const std::string &algo, bool paint, bool colors, bool crop,
                  const std::string &filepath) {
 
   if (algo == BOTH_) {
