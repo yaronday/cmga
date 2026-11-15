@@ -7,7 +7,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/Debug/cmga",
             "cwd": "${workspaceFolder}",
-            "args": ["--vis", "--conn_color", "blueviolet"],
+            "args": ["--mat", 
+                     "{{1, 2, 1}, {2, 3, 2}, {1, 2, 1}}, {{1, 2, 1}, {2, 1, 2}, {1, 2, 3}}", 
+                     "--root", "data/matStr"],
             "preLaunchTask": "Compile Debug"
         },
         {

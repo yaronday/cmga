@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     for (Array2D<uint8_t> &mat : matList) {
       mfh.currMat = mat;
       mfh.parsedMatIdx++;
-      timedSolver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop, mfh.filename);
+      timedSolver(dfsCG, ufCG, mfh.currMat, algoChoice, paint, colors, crop, {});
       mfh.fWriteMat(mfh.filename, true);
     }
   }
