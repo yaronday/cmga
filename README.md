@@ -1,7 +1,8 @@
 # Color Matrix Genalyzer (CMGA)
 
-CMGA is a C++20 CLI tool that finds the largest region of same-color cells connected by 8-neighbor adjacency in one or more matrices.
-It supports DFS and Union-Find (UF). Its UF implementation detects all regions with the maximal connected cell count, while DFS detects one largest region. Detected regions are saved as matrix text files, either full-size with other cells blank or cropped with bounding-box coordinates relative to the original matrix. CMGA can also paint results or visualize connected same-color cells.
+CMGA is a C++20 command-line tool that generates random color matrices and analyzes them to find connected components using DFS and Union-Find (UF) algorithms based on 8-neighbor adjacency.
+
+The UF implementation efficiently detects all regions sharing the maximal connected cell count, while DFS identifies a single largest region. Detected regions can be saved as matrix text files either in full size (with background cells blanked) or cropped using bounding-box coordinates relative to the original matrix. Additionally, CMGA can paint results or visualize connected same-color cells.
 
 ## Build
 
