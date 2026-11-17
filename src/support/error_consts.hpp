@@ -49,7 +49,7 @@ inline constexpr char FILESIZE_LIMIT_ERR[] =
     "Estimated filesize[MB] required exceeds maximum limit";
 inline constexpr char INVALID_FEXT_ERR[] = "Only 'txt' and 'csv' are supported";
 inline constexpr char EMPTYDIR_ERR[] = "No matching files were found in directory";
-inline constexpr char WR_LOCK_ERR[] = "add --ovr to modify existing file.";
+inline constexpr char WR_LOCK_ERR[] = "add --ovr to modify existing file";
 inline constexpr char FILE_ERR[] = "Error opening file";
 
 inline constexpr char INV_ALGO_ERR[] =

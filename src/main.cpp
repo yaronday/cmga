@@ -29,10 +29,9 @@ int main(int argc, char *argv[]) {
 
   visNotifier(algoChoice, visEn);
 
-  if (matStr.empty())
+  if (matStr.empty()) {
     processData(dfsCG, ufCG, mfh, algoChoice, paint, colors, crop);
-  else {
-    mfh.overwrite = true;
+  } else {
     auto matList = mfh.parseMatrices(matStr);
     for (auto &mat : matList) {
       mfh.currMat = std::move(mat);

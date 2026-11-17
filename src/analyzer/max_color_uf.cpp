@@ -165,7 +165,7 @@ void UFColorGrid::notifyMaxColorRegions(
   console::formatTxt(content, LIGHT_CYAN);
 
   if (extraFile)
-    fWrite(content, updatePath(filename, maxSize, algo), "additional info file", true);
+    fWrite(content, updatePath(filename, maxSize, algo), "additional info file", mfh.overwrite);
 }
 
 const char *UFColorGrid::getRegionColor(

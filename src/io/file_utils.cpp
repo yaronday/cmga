@@ -58,7 +58,8 @@ void fWrite(const std::string &contents, const std::string &filepath, const std:
             bool overwrite) {
   if (contents.empty())
     return;
-  fHandleInfo(filepath, info, overwrite);
+  if (!fHandleInfo(filepath, info, overwrite))
+    return;
   std::ofstream file(filepath);
   if (!file.is_open()) {
     err::handle(ErrCode::FILE_OPEN_ERROR, err::ErrorContext());
@@ -73,7 +74,8 @@ void fWrite(const std::vector<char> &buffer, const std::string &filepath, const 
             bool overwrite) {
   if (buffer.empty())
     return;
-  fHandleInfo(filepath, info, overwrite);
+  if (!fHandleInfo(filepath, info, overwrite))
+    return;
   std::ofstream file(filepath, std::ios::binary);
   if (!file.is_open()) {
     err::handle(ErrCode::FILE_OPEN_ERROR, err::ErrorContext());
@@ -83,18 +85,19 @@ void fWrite(const std::vector<char> &buffer, const std::string &filepath, const 
   file.close();
 }
 
-void fHandleInfo(const std::string &filepath, const std::string &info, bool overwrite) {
+bool fHandleInfo(const std::string &filepath, const std::string &info, bool overwrite) {
   std::ifstream infile(filepath);
   bool fileExists = infile.good();
   infile.close();
   if ((!overwrite) && fileExists) {
     err::handle(ErrCode::OVR_NOT_ENABLED, err::ErrorContext(filepath));
-    return;
+    return false;
   }
 
   const std::string actionPrefix = fileExists ? OVR_ : WR_;
   std::string msg = std::format("{} {} {}{}", actionPrefix, info, COLON_SP, filepath);
   console::formatTxt(msg, LIGHT_GREEN);
+  return true;
 }
 
 std::string fGenPath(const std::string &filename, const std::string &suffix, bool txt) {

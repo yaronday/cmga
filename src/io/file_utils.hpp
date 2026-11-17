@@ -29,7 +29,7 @@ void fWrite(const std::string &contents, const std::string &filepath,
 void fWrite(const std::vector<char> &buffer, const std::string &filepath,
             const std::string &info = DEFAULT_INFO, bool overwrite = EN_OVR);
 
-void fHandleInfo(const std::string &filepath, const std::string &info = DEFAULT_INFO,
+bool fHandleInfo(const std::string &filepath, const std::string &info = DEFAULT_INFO,
                  bool overwrite = EN_OVR);
 
 void handleDiskSpace(double totalSize, const double maxSize);
