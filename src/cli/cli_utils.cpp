@@ -41,16 +41,12 @@ void mainMenuDisplay() {
                            "coordinates, to files. Ignored if painting is used.\n",
                            P_CROP);
   console::formatTxt(
-      std::format("  {} or {} or {} : Display this help menu.", P_HELP, P_H, P_H_WIN),
-      LIGHT_MAGENTA);
-  console::formatTxt(std::format("  {}       : Display license information.", P_LIC),
-                     LIGHT_MAGENTA);
-  console::formatTxt(std::format("  {} or {} : Display title and version.\n", P_VERSION, P_V),
-                     LIGHT_MAGENTA);
-  console::formatTxt(std::format("  Note: overwriting existing files is disabled unless {} is "
-                                 "specified.\n",
-                                 P_OVR),
-                     LIGHT_YELLOW);
+      std::format("  {} or {} or {} : Display this help menu.", P_HELP, P_H, P_H_WIN));
+
+  console::formatTxt(std::format("  {}       : Display license information.", P_LIC));
+
+  console::formatTxt(std::format("  {} or {} : Display title and version.\n", P_VERSION, P_V));
+
   console::formatTxt(std::format("Example: cmga {} C:/CMGA/data/default_matrices {} {} dfs\n",
                                  P_ROOTDIR, P_PAINT, P_ALGO),
                      LIGHT_GREEN);
