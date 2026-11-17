@@ -9,6 +9,8 @@ void ColorGrid::init(Array2D<uint8_t> &mat) {
   m = static_cast<int>(mat.cols());
   maxColor = 1;
   maxSize = 1;
+  minVal = INT_MAX;
+  maxVal = INT_MIN;
 }
 
 bool ColorGrid::isValid(int row, int col, int n, int m) {

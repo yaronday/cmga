@@ -81,7 +81,7 @@ public:
     }
 
     auto buffer = mfh.fillBuffer(cellCondition, getValue, minRow, maxRow, minCol, maxCol);
-    fWrite(buffer, filepath, DEFAULT_INFO, true);
+    fWrite(buffer, filepath, DEFAULT_INFO, overwrite);
   }
 
   void updateMfhFilename(const std::string &filepath);
