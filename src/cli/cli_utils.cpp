@@ -6,10 +6,12 @@ void mainMenuDisplay() {
   title_and_ver();
   console::formatTxt("Main App:", LIGHT_CYAN);
   std::cout << std::format("Usage: cmga {} {} {} {} {} {} {} {} {} {}\n"
-                           "             {} [{} <conn_color>] [{} <root_dir>] [{} "
+                           "             {} [{}] [{} <conn_color>] [{} <root_dir>] [{} "
                            "<algo>] [{} <matString>]\n",
                            P_HELP, P_H, P_H_WIN, P_VERSION, P_V, P_LIC, P_PAINT, P_NO_COLOR, P_CROP,
-                           P_VISUALIZER, P_FORCE_VIS, P_CONN_COLOR, P_ROOTDIR, P_ALGO, P_MATRIX)
+                           P_VISUALIZER, P_FORCE_VIS, P_OVR, P_CONN_COLOR, P_ROOTDIR, P_ALGO,
+                           P_MATRIX)
+            << std::format("  {:<12} : Allow overwriting existing output files.\n", P_OVR)
             << std::format("  {:<12} : Select graph algorithm: DFS, UF or BOTH.\n", P_ALGO)
             << std::format("  {:<12} : Paint max connected color regions.\n", P_PAINT)
             << std::format("  {:<12} : Paint black and white (using unique symbols).\n"
@@ -45,8 +47,9 @@ void mainMenuDisplay() {
                      LIGHT_MAGENTA);
   console::formatTxt(std::format("  {} or {} : Display title and version.\n", P_VERSION, P_V),
                      LIGHT_MAGENTA);
-  console::formatTxt("  Note: unlike in Filegen, overwrite is permanently enabled for "
-                     "this operation.\n",
+  console::formatTxt(std::format("  Note: overwriting existing files is disabled unless {} is "
+                                 "specified.\n",
+                                 P_OVR),
                      LIGHT_YELLOW);
   console::formatTxt(std::format("Example: cmga {} C:/CMGA/data/default_matrices {} {} dfs\n",
                                  P_ROOTDIR, P_PAINT, P_ALGO),

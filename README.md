@@ -67,12 +67,13 @@ color codes. UF visualizes those regions with distinct node colors:
 | `--vis`                  | Visualize UF roots. Requires Graphviz; enabled when `max(rows, columns) <= 70`.                                               |
 | `--force_vis`            | Visualize matrices above the default size limit. Use with caution.                                                            |
 | `--conn_color <color>`   | Set the visualization connector color using an X11 color name or hex code.                                                    |
+| `--ovr`                  | Allow overwriting existing output files.                                                                                      |
 | `--help`, `-h`, `/?`     | Show help.                                                                                                                    |
 | `--version`, `-v`        | Show version.                                                                                                                 |
 | `--license`              | Show license information.                                                                                                     |
 
 Without `--paint` or `--no_color`, results are written under the root directory.
-The main operation overwrites existing output files.
+Existing output files are preserved unless `--ovr` is specified.
 
 ## Matrix file generator
 
