@@ -1,6 +1,7 @@
 #include "cli_utils.hpp"
 #include "cli_consts.hpp"
 #include "common/x11colors_validator.hpp"
+#include "support/constants.hpp"
 
 void mainMenuDisplay() {
   title_and_ver();
@@ -306,15 +307,19 @@ void parseCLIargs(int argc, char *argv[], std::string &matStr, std::string &algo
     if (arg == P_MINV) {
       auto it = args_map.find(P_MAXV);
       int maxCellVal = (it == args_map.end() || it->second.empty()) ? max_v : stoi(it->second);
-      maxCellVal = std::max(MIN_V + 1, std::min(MAX_V, maxCellVal)); // Clamp to valid maxv range
-      validateAndAssign(min_v, arg, MIN_V, std::min(MAX_V - 1, maxCellVal - 1), args_map);
+      maxCellVal =
+          std::max(MIN_V_LIMIT + 1, std::min(MAX_V_LIMIT, maxCellVal)); // Clamp to valid maxv range
+      validateAndAssign(min_v, arg, MIN_V_LIMIT, std::min(MAX_V_LIMIT - 1, maxCellVal - 1),
+                        args_map);
     }
 
     if (arg == P_MAXV) {
       auto it = args_map.find(P_MINV);
       int minCellVal = (it == args_map.end() || it->second.empty()) ? min_v : stoi(it->second);
-      minCellVal = std::max(MIN_V, std::min(MAX_V - 1, minCellVal)); // Clamp to valid minv range
-      validateAndAssign(max_v, arg, std::max(minCellVal + 1, MIN_V + 1), MAX_V, args_map);
+      minCellVal =
+          std::max(MIN_V_LIMIT, std::min(MAX_V_LIMIT - 1, minCellVal)); // Clamp to valid minv range
+      validateAndAssign(max_v, arg, std::max(minCellVal + 1, MIN_V_LIMIT + 1), MAX_V_LIMIT,
+                        args_map);
     }
   }
 

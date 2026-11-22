@@ -1,10 +1,8 @@
 #pragma once
 
-#include <string>
-
-#include <optional>
-
 #include <format>
+#include <optional>
+#include <string>
 
 #include "constants.hpp"
 #include "error_consts.hpp"

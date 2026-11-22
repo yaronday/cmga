@@ -79,7 +79,8 @@ bool MatFileHandler::isValidMatSpec(int rows, int cols) const {
     }
     return false;
   }
-  if (!utils::isWithinRange(min_v, MIN_V, MAX_V) || !utils::isWithinRange(max_v, MIN_V, MAX_V)) {
+  if (!utils::isWithinRange(min_v, MIN_V_LIMIT, MAX_V_LIMIT - 1) ||
+      !utils::isWithinRange(max_v, MIN_V_LIMIT + 1, MAX_V_LIMIT)) {
     return false;
   }
   if (min_v > max_v) {
