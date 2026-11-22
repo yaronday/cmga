@@ -1,10 +1,8 @@
 ﻿#pragma once
 
 #include <random>
-
-#include <unordered_set>
-
-#include "console.hpp" // IWYU pragma: keep
+#include <unordered_set> // IWYU pragma: keep
+#include "console.hpp"   // IWYU pragma: keep
 
 namespace utils {
 

@@ -5,7 +5,7 @@
 #include "analyzer/max_color_uf.hpp" // IWYU pragma: keep
 #include "cli_consts.hpp"            // IWYU pragma: keep
 #include "io/matfile_handler.hpp"
-#include "support/error_handler.hpp"
+#include "support/error_handler.hpp" // IWYU pragma: keep
 
 const std::string algoSelect = ALGO_SELECTION;
 

@@ -7,9 +7,12 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/Debug/cmga",
             "cwd": "${workspaceFolder}",
-            "args": ["--mat", 
-                     "{{1, 2, 1}, {2, 3, 2}, {1, 2, 1}}, {{1, 2, 1}, {2, 1, 2}, {1, 2, 3}}", 
-                     "--root", "data/matStr"],
+            "args": ["filegen", 
+                     "--sq", 
+                     "--minr", "10", 
+                     "--maxr", "10",  
+                     "--maxv", "7",
+                     "--root", "data/fg"],
             "preLaunchTask": "Compile Debug"
         },
         {

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "color_grid.hpp"
-#include "union_find.hpp"
-
 #include <fstream> // IWYU pragma: keep
 #include <string>
+
+#include "color_grid.hpp"
+#include "union_find.hpp"
 
 class UFColorGrid : public ColorGrid {
 private:
